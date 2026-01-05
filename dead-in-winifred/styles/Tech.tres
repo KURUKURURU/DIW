@@ -1,0 +1,10 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://cp4m2aay8nami"]
+
+[ext_resource type="FontFile" uid="uid://c0jvwrrnndgc0" path="res://fonts/atlantis/Atlantis-RegularSmallCaps.otf" id="1_60k8g"]
+[ext_resource type="FontFile" uid="uid://dwqgchwelbiis" path="res://fonts/atlantis/AtlantisHeadline-Bold.ttf" id="1_24046"]
+
+[resource]
+RichTextLabel/colors/default_color = Color(0, 0, 0, 1)
+RichTextLabel/font_sizes/bold_font_size = 19
+RichTextLabel/fonts/bold_font = ExtResource("1_24046")
+RichTextLabel/fonts/normal_font = ExtResource("1_60k8g")

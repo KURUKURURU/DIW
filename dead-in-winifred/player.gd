@@ -3,8 +3,15 @@ extends CharacterBody2D
 
 const SPEED = 300.0
 var moving : bool
+var can_move : bool = true
 
 func _physics_process(delta: float) -> void:
+	
+	if not can_move:
+		velocity = Vector2.ZERO
+		move_and_slide()
+		moving = false
+		return
 	
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.

@@ -1,10 +1,46 @@
-[gd_scene load_steps=6 format=3 uid="uid://dpxk2n83pvoo5"]
+[gd_scene load_steps=10 format=3 uid="uid://dpxk2n83pvoo5"]
 
 [ext_resource type="Script" uid="uid://daxm84wp2ral0" path="res://MainTool/speak.gd" id="1_75tj6"]
 [ext_resource type="Theme" uid="uid://cu5t5px448s1e" path="res://styles/speak.tres" id="2_apowt"]
 [ext_resource type="FontFile" uid="uid://cqps7m4fskqt6" path="res://fonts/xl-tight-boo/XL-TightBoo.otf" id="3_vp1kc"]
 [ext_resource type="FontFile" uid="uid://v4o1tax3tfx0" path="res://fonts/maltais-learlex/Maltais_Learlex.ttf" id="4_ew14m"]
-[ext_resource type="Texture2D" uid="uid://3phyaynfixxd" path="res://sprites by judas la carotte/sprite1 angry.png" id="5_37d01"]
+[ext_resource type="Script" uid="uid://cejdyuktd378d" path="res://MainTool/advance_button.gd" id="5_75tj6"]
+[ext_resource type="Texture2D" uid="uid://btvw7frjdo705" path="res://images/images.png" id="5_apowt"]
+
+[sub_resource type="Animation" id="Animation_75tj6"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("txt:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_yk07a"]
+resource_name = "revela"
+length = 1.486
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("txt:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.24766666, -0.16666666, 0, 0),
+"times": PackedFloat32Array(0, 1.486)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_apowt"]
+_data = {
+&"RESET": SubResource("Animation_75tj6"),
+&"reveal": SubResource("Animation_yk07a")
+}
 
 [node name="Speak" type="Node2D"]
 script = ExtResource("1_75tj6")
@@ -37,6 +73,8 @@ offset_right = 1005.0
 offset_bottom = 617.0
 theme = ExtResource("2_apowt")
 text = "Do you really think you can kill someone and expect to get away with it? Have you watched any TV show lately?"
+visible_characters = 0
+visible_ratio = 0.0
 
 [node name="name" type="RichTextLabel" parent="."]
 offset_left = 326.0
@@ -62,4 +100,20 @@ offset_bottom = 607.0
 [node name="Sprite" type="Sprite2D" parent="cropTool"]
 position = Vector2(70, 202)
 scale = Vector2(0.24519496, 0.24519496)
-texture = ExtResource("5_37d01")
+
+[node name="animation" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_apowt")
+}
+
+[node name="advance_button" type="TextureButton" parent="."]
+offset_left = 927.00006
+offset_top = 530.0
+offset_right = 1127.0
+offset_bottom = 730.0
+scale = Vector2(0.43386686, 0.43386686)
+texture_normal = ExtResource("5_apowt")
+script = ExtResource("5_75tj6")
+
+[connection signal="advance" from="advance_button" to="." method="advance"]
+[connection signal="pressed" from="advance_button" to="advance_button" method="_on_pressed"]

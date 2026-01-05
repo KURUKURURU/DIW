@@ -1,0 +1,261 @@
+[gd_scene load_steps=9 format=3 uid="uid://202whtl45tqd"]
+
+[ext_resource type="Script" uid="uid://dum5adcnimltb" path="res://MainTool/phone.gd" id="1_2yfqf"]
+[ext_resource type="Theme" uid="uid://cp4m2aay8nami" path="res://styles/Tech.tres" id="1_loew3"]
+[ext_resource type="Texture2D" uid="uid://cxiayc8mxpauq" path="res://images/gold.png" id="2_pw2tw"]
+[ext_resource type="Texture2D" uid="uid://45uma2hpa6r1" path="res://images/Screen Shot 2026-01-04 at 11.34.50 PM.png" id="3_mov1r"]
+
+[sub_resource type="Animation" id="Animation_mov1r"]
+resource_name = "PullUp"
+length = 1.491
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("whole:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(2, 0),
+"points": PackedFloat32Array(574, 0, 0, 0.16666667, -95.66667, 6.5, -0.8333333, 2.5, 0.6999999, -3),
+"times": PackedFloat32Array(0, 1.0666667)
+}
+
+[sub_resource type="Animation" id="Animation_2yfqf"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("whole:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(650, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_bapuj"]
+resource_name = "Away"
+length = 0.736
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("whole:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(6.6045647, -0.25, 0, 0.25, 0, 548, -0.32143462, -53.5, 0, 0),
+"times": PackedFloat32Array(0, 0.5214346)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hnack"]
+_data = {
+&"Away": SubResource("Animation_bapuj"),
+&"PullUp": SubResource("Animation_mov1r"),
+&"RESET": SubResource("Animation_2yfqf")
+}
+
+[node name="phone" type="Node2D"]
+script = ExtResource("1_2yfqf")
+
+[node name="whole" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_top = 650.0
+offset_right = 40.0
+offset_bottom = 690.0001
+
+[node name="legitBG" type="ColorRect" parent="whole"]
+layout_mode = 0
+offset_left = 802.0
+offset_top = 119.0
+offset_right = 1112.0
+offset_bottom = 630.0
+color = Color(0.25384274, 0.25384274, 0.25384274, 1)
+
+[node name="Caller" type="Control" parent="whole"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="whole/Caller"]
+layout_mode = 0
+offset_left = 635.0
+offset_top = 314.0
+offset_right = 675.0
+offset_bottom = 354.0
+
+[node name="ColorRect2" type="ColorRect" parent="whole/Caller/TextureRect"]
+layout_mode = 0
+offset_left = 190.0
+offset_top = -157.0
+offset_right = 454.0
+offset_bottom = 40.0
+color = Color(0.46978414, 0.9492875, 4.6205523e-06, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="whole/Caller/TextureRect"]
+layout_mode = 0
+offset_left = 190.0
+offset_top = -157.0
+offset_right = 454.0
+offset_bottom = -150.0
+color = Color(0.8331298, 1, 0.75741106, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="whole/Caller/TextureRect"]
+layout_mode = 0
+offset_left = 190.0
+offset_top = -111.0
+offset_right = 454.0
+offset_bottom = 40.0
+color = Color(0.09708274, 0.13540468, 1.2032688e-08, 0.7294118)
+
+[node name="Text" type="RichTextLabel" parent="whole/Caller"]
+layout_mode = 0
+offset_left = 830.0
+offset_top = 170.0
+offset_right = 1062.0
+offset_bottom = 203.0
+theme = ExtResource("1_loew3")
+theme_override_font_sizes/normal_font_size = 28
+bbcode_enabled = true
+text = "[b] Past Callers: "
+
+[node name="Caller_Menu" type="ScrollContainer" parent="whole/Caller"]
+layout_mode = 0
+offset_left = 825.0
+offset_top = 208.0
+offset_right = 1089.42
+offset_bottom = 354.0
+horizontal_scroll_mode = 0
+
+[node name="Crop" type="Control" parent="whole/Caller/Caller_Menu"]
+custom_minimum_size = Vector2(256.42, 300)
+layout_mode = 2
+
+[node name="List" type="VBoxContainer" parent="whole/Caller/Caller_Menu/Crop"]
+custom_minimum_size = Vector2(-5.77, 0)
+layout_mode = 0
+offset_right = 256.0
+offset_bottom = 212.0
+theme_override_constants/separation = 4
+
+[node name="Caller_1" type="ColorRect" parent="whole/Caller/Caller_Menu/Crop/List"]
+custom_minimum_size = Vector2(140, 50)
+layout_mode = 2
+color = Color(0.57962906, 1.0690836, 0.5071173, 1)
+
+[node name="Text" type="RichTextLabel" parent="whole/Caller/Caller_Menu/Crop/List/Caller_1"]
+layout_mode = 0
+offset_left = 10.0
+offset_right = 203.0
+offset_bottom = 50.0
+theme = ExtResource("1_loew3")
+theme_override_font_sizes/normal_font_size = 28
+text = "will andrews"
+
+[node name="Hover" type="TextureButton" parent="whole/Caller/Caller_Menu/Crop/List/Caller_1"]
+self_modulate = Color(1.9807724, 1.9807724, 1.2240502, 0.49019608)
+layout_mode = 0
+offset_right = 264.0
+offset_bottom = 50.0
+scale = Vector2(0.9482518, 1)
+texture_pressed = ExtResource("2_pw2tw")
+texture_hover = ExtResource("2_pw2tw")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Caller_2" type="ColorRect" parent="whole/Caller/Caller_Menu/Crop/List"]
+custom_minimum_size = Vector2(140, 50)
+layout_mode = 2
+color = Color(0.57962906, 1.0690836, 0.5071173, 1)
+
+[node name="Text" type="RichTextLabel" parent="whole/Caller/Caller_Menu/Crop/List/Caller_2"]
+layout_mode = 0
+offset_left = 10.0
+offset_right = 203.0
+offset_bottom = 50.0
+theme = ExtResource("1_loew3")
+theme_override_font_sizes/normal_font_size = 28
+text = "mom"
+
+[node name="Hover" type="TextureButton" parent="whole/Caller/Caller_Menu/Crop/List/Caller_2"]
+self_modulate = Color(1.9807724, 1.9807724, 1.2240502, 0.49019608)
+layout_mode = 0
+offset_right = 264.0
+offset_bottom = 50.0
+scale = Vector2(0.9482518, 1)
+texture_pressed = ExtResource("2_pw2tw")
+texture_hover = ExtResource("2_pw2tw")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Caller_3" type="ColorRect" parent="whole/Caller/Caller_Menu/Crop/List"]
+custom_minimum_size = Vector2(140, 50)
+layout_mode = 2
+color = Color(0.57962906, 1.0690836, 0.5071173, 1)
+
+[node name="Text" type="RichTextLabel" parent="whole/Caller/Caller_Menu/Crop/List/Caller_3"]
+layout_mode = 0
+offset_left = 10.0
+offset_right = 203.0
+offset_bottom = 50.0
+theme = ExtResource("1_loew3")
+theme_override_font_sizes/normal_font_size = 28
+text = "unknown (spam)"
+
+[node name="Hover" type="TextureButton" parent="whole/Caller/Caller_Menu/Crop/List/Caller_3"]
+self_modulate = Color(1.9807724, 1.9807724, 1.2240502, 0.49019608)
+layout_mode = 0
+offset_right = 264.0
+offset_bottom = 50.0
+scale = Vector2(0.9482518, 1)
+texture_pressed = ExtResource("2_pw2tw")
+texture_hover = ExtResource("2_pw2tw")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Keypad" type="Control" parent="whole"]
+anchors_preset = 0
+offset_left = 835.0
+offset_top = 394.0
+offset_right = 875.0
+offset_bottom = 434.0
+
+[node name="img" type="TextureRect" parent="whole/Keypad"]
+layout_mode = 0
+offset_left = -10.0
+offset_top = -28.0
+offset_right = 286.0
+offset_bottom = 434.0
+scale = Vector2(0.8812202, 0.5558783)
+texture = ExtResource("3_mov1r")
+
+[node name="Home" type="TextureButton" parent="whole/Keypad"]
+self_modulate = Color(0.43529412, 1, 1, 0.25490198)
+layout_mode = 0
+offset_left = 164.0
+offset_top = 10.0
+offset_right = 204.09189
+offset_bottom = 50.917267
+scale = Vector2(2.0453014, 0.87982446)
+texture_hover = ExtResource("2_pw2tw")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Accept" type="TextureButton" parent="whole/Keypad"]
+self_modulate = Color(0.43529412, 1, 1, 0.25490198)
+layout_mode = 0
+offset_left = -2.0
+offset_top = 10.0
+offset_right = 38.09189
+offset_bottom = 50.917267
+scale = Vector2(2.0453014, 0.87982446)
+texture_hover = ExtResource("2_pw2tw")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Movement" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_hnack")
+}
