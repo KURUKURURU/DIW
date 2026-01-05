@@ -1,11 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://cvq280sj7m43r"]
+[gd_scene load_steps=8 format=3 uid="uid://cvq280sj7m43r"]
 
 [ext_resource type="PackedScene" uid="uid://so68gwvvuap2" path="res://MainTool/player.tscn" id="1_54lxw"]
+[ext_resource type="PackedScene" uid="uid://dpxk2n83pvoo5" path="res://MainTool/speak.tscn" id="1_schkm"]
 [ext_resource type="Texture2D" uid="uid://nx70si67ollt" path="res://GodotWakatime.png" id="2_lhsc1"]
 
 [sub_resource type="GDScript" id="GDScript_54lxw"]
 script/source = "extends Node2D
-
+@onready var e = $Player/RemoteTransform2D/Emote  #emotes / screen animations
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -15,9 +16,8 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed(\"ui_accept\"):
-		$Player/RemoteTransform2D/Emote.play(\"shake\")
+		e.play(\"shake\")
 	#Hello is this being tracked? I need this to track please
-
 "
 
 [sub_resource type="Animation" id="Animation_schkm"]
@@ -75,6 +75,12 @@ limit_bottom = 1970
 limit_smoothed = true
 position_smoothing_enabled = true
 
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Camera2D"]
+remote_path = NodePath("../../GUI/Speak")
+use_global_coordinates = false
+update_position = false
+update_rotation = false
+
 [node name="Player" parent="." instance=ExtResource("1_54lxw")]
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player"]
@@ -93,3 +99,7 @@ texture = ExtResource("2_lhsc1")
 [node name="GodotWakatime2" type="Sprite2D" parent="."]
 position = Vector2(773, 297)
 texture = ExtResource("2_lhsc1")
+
+[node name="GUI" type="CanvasLayer" parent="."]
+
+[node name="Speak" parent="GUI" instance=ExtResource("1_schkm")]
