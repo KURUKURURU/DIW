@@ -1,0 +1,13 @@
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://cu5t5px448s1e"]
+
+[ext_resource type="FontFile" uid="uid://c7likxey10y5o" path="res://fonts/caslon-antique/CaslonAntique-Bold.ttf" id="1_34q1r"]
+[ext_resource type="FontFile" uid="uid://bipaqahvru82x" path="res://fonts/caslon-antique/CaslonAntique-BoldItalic.ttf" id="2_1ntn8"]
+[ext_resource type="FontFile" uid="uid://bnwbe8ppabrgx" path="res://fonts/caslon-antique/CaslonAntique-Italic.ttf" id="3_ko8ok"]
+[ext_resource type="FontFile" uid="uid://cxmabisaus3mo" path="res://fonts/caslon-antique/CaslonAntique.ttf" id="4_3ghkg"]
+
+[resource]
+RichTextLabel/font_sizes/normal_font_size = 26
+RichTextLabel/fonts/bold_font = ExtResource("1_34q1r")
+RichTextLabel/fonts/bold_italics_font = ExtResource("2_1ntn8")
+RichTextLabel/fonts/italics_font = ExtResource("3_ko8ok")
+RichTextLabel/fonts/normal_font = ExtResource("4_3ghkg")

@@ -1,0 +1,65 @@
+[gd_scene load_steps=6 format=3 uid="uid://dpxk2n83pvoo5"]
+
+[ext_resource type="Script" uid="uid://daxm84wp2ral0" path="res://MainTool/speak.gd" id="1_75tj6"]
+[ext_resource type="Theme" uid="uid://cu5t5px448s1e" path="res://styles/speak.tres" id="2_apowt"]
+[ext_resource type="FontFile" uid="uid://cqps7m4fskqt6" path="res://fonts/xl-tight-boo/XL-TightBoo.otf" id="3_vp1kc"]
+[ext_resource type="FontFile" uid="uid://v4o1tax3tfx0" path="res://fonts/maltais-learlex/Maltais_Learlex.ttf" id="4_ew14m"]
+[ext_resource type="Texture2D" uid="uid://3phyaynfixxd" path="res://sprites by judas la carotte/sprite1 angry.png" id="5_37d01"]
+
+[node name="Speak" type="Node2D"]
+script = ExtResource("1_75tj6")
+
+[node name="img" type="TextureRect" parent="."]
+offset_left = -20.0
+offset_top = -19.0
+offset_right = 20.0
+offset_bottom = 21.0
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = 132.0
+offset_top = 8.0
+offset_right = 1007.0
+offset_bottom = 102.0
+color = Color(0.19607843, 0.19607843, 0.19607843, 0.5411765)
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+offset_left = 132.0
+offset_top = -27.0
+offset_right = 1007.0
+offset_bottom = 109.09961
+scale = Vector2(0.6453194, 0.26451215)
+color = Color(0.19607843, 0.19607843, 0.19607843, 0.5411765)
+
+[node name="txt" type="RichTextLabel" parent="."]
+offset_left = 314.0
+offset_top = 16.0
+offset_right = 994.0
+offset_bottom = 98.0
+theme = ExtResource("2_apowt")
+text = "Do you really think you can kill someone and expect to get away with it? Have you watched any TV show lately?"
+
+[node name="name" type="RichTextLabel" parent="."]
+offset_left = 315.0
+offset_top = -21.0
+offset_right = 652.0
+offset_bottom = 12.0
+theme = ExtResource("2_apowt")
+theme_override_fonts/normal_font = ExtResource("3_vp1kc")
+theme_override_fonts/bold_font = ExtResource("4_ew14m")
+theme_override_fonts/bold_italics_font = ExtResource("4_ew14m")
+theme_override_fonts/italics_font = ExtResource("4_ew14m")
+theme_override_font_sizes/normal_font_size = 27
+text = "Ava Bisset"
+
+[node name="cropTool" type="ColorRect" parent="."]
+clip_children = 1
+clip_contents = true
+offset_left = 140.0
+offset_top = -170.0
+offset_right = 293.0
+offset_bottom = 88.0
+
+[node name="Sprite" type="Sprite2D" parent="cropTool"]
+position = Vector2(70, 202)
+scale = Vector2(0.24519496, 0.24519496)
+texture = ExtResource("5_37d01")
