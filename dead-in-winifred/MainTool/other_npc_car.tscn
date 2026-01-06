@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://ckopmia362c5q"]
+
+[ext_resource type="Script" uid="uid://cdrfripl8gm11" path="res://MainTool/other_npc_car.gd" id="1_hj1xs"]
+[ext_resource type="Texture2D" uid="uid://mepmxbuqb8nt" path="res://images/3dc48a596b9c865ef77b5b208b5d69f9.png" id="2_7qyok"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7qyok"]
+size = Vector2(922.5, 369)
+
+[node name="NPC_Car" type="CharacterBody2D"]
+script = ExtResource("1_hj1xs")
+sprite = "\"res://images/carph.jpg\""
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+self_modulate = Color(1.2935506, 1.2935506, 0, 1)
+texture = ExtResource("2_7qyok")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(22, 0)
+rotation = 3.1415927
+shape = SubResource("RectangleShape2D_7qyok")
+
+[node name="detect" type="RayCast2D" parent="."]
+rotation = 3.1415927
+target_position = Vector2(-601, -1)

@@ -8,6 +8,11 @@
 
 [sub_resource type="GDScript" id="GDScript_54lxw"]
 script/source = "extends Node2D
+
+## ---------------------------------------------------------------------------##
+
+#Copy and paste the following code into other important scenes to reduce coding time:
+
 @onready var e = $Player/RemoteTransform2D/Emote  #emotes / screen animations
 @onready var speak = $GUI/Speak  #textbox text, name, and sprite
 
@@ -19,16 +24,9 @@ script/source = "extends Node2D
 @onready var player_body = $Player/area #body
 @onready var ava = $AVA/area #me lol
 
+var can_interact: bool  = true
+
 signal release
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass
-
-
-## ---------------------------------------------------------------------------##
-
-#Copy and paste the following code into other important scenes to reduce coding time:
 
 func say( message: String ):
 	await check_phone()
@@ -36,8 +34,10 @@ func say( message: String ):
 
 func stop():
 	player.can_move = false
+	can_interact = false
 	await release
 	player.can_move = true
+	can_interact = true
 
 func done():
 	emit_signal(\"release\")
@@ -58,7 +58,7 @@ func check_phone():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed(\"interact\"):
+	if Input.is_action_just_pressed(\"interact\") and can_interact:
 		if ava.overlaps_area(player_body):
 			AVA_interact()
 			print(\"debug\")
@@ -97,6 +97,21 @@ tracks/0/keys = {
 "values": [Vector2(0, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_btmwu"]
+length = 1.009
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Player/RemoteTransform2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.66, 1.009),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -20), Vector2(0, 20), Vector2(0, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_lhsc1"]
 resource_name = "slide_down"
 length = 0.626
@@ -111,21 +126,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 0.40612698, 3.1383355),
 "update": 0,
 "values": [Vector2(0, 0), Vector2(-57, 0), Vector2(67, 0), Vector2(0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_btmwu"]
-length = 1.009
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../Player/RemoteTransform2D:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.4, 0.66, 1.009),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(0, -20), Vector2(0, 20), Vector2(0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_btmwu"]

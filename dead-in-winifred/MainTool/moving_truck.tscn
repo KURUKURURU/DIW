@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://b7w87yv5i3w1s"]
+
+[ext_resource type="Script" uid="uid://c5s8ogi2u65nq" path="res://MainTool/moving_truck.gd" id="1_xaduu"]
+[ext_resource type="Texture2D" uid="uid://rfbufjxbwore" path="res://images/Screen Shot 2026-01-05 at 6.22.19 PM.png" id="2_v3ye0"]
+[ext_resource type="AudioStream" uid="uid://lrj0qi7q8i3t" path="res://sounds/SFX/Other/Car/carhonk.wav" id="3_v3ye0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7qyok"]
+size = Vector2(922.5, 273)
+
+[node name="MovingVan" type="CharacterBody2D"]
+script = ExtResource("1_xaduu")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 3.1364105
+texture = ExtResource("2_v3ye0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-15, 0)
+shape = SubResource("RectangleShape2D_7qyok")
+
+[node name="detect" type="RayCast2D" parent="."]
+position = Vector2(-80, 0)
+target_position = Vector2(-601, -1)
+
+[node name="honk" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_v3ye0")

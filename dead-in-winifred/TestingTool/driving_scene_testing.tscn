@@ -1,0 +1,128 @@
+[gd_scene load_steps=8 format=3 uid="uid://cnv8gln8vqfb1"]
+
+[ext_resource type="Texture2D" uid="uid://c6k65pwu8q5ig" path="res://images/Screen Shot 2026-01-05 at 6.54.47 PM.png" id="1_ees1s"]
+[ext_resource type="PackedScene" uid="uid://p33mn10333o5" path="res://MainTool/car.tscn" id="1_spybq"]
+[ext_resource type="Script" uid="uid://dl6vy84evpdys" path="res://TestingTool/DrivingScene.gd" id="1_u7e5u"]
+[ext_resource type="PackedScene" uid="uid://ckopmia362c5q" path="res://MainTool/other_npc_car.tscn" id="3_7krua"]
+[ext_resource type="PackedScene" uid="uid://b7w87yv5i3w1s" path="res://MainTool/moving_truck.tscn" id="4_6hb63"]
+[ext_resource type="PackedScene" uid="uid://202whtl45tqd" path="res://MainTool/phone.tscn" id="5_ees1s"]
+[ext_resource type="PackedScene" uid="uid://dpxk2n83pvoo5" path="res://MainTool/speak.tscn" id="5_u7e5u"]
+
+[node name="DrivingScene_Testing" type="Node2D"]
+script = ExtResource("1_u7e5u")
+
+[node name="bg" type="Parallax2D" parent="."]
+repeat_size = Vector2(1252, 0)
+repeat_times = 3
+
+[node name="ColorRect" type="ColorRect" parent="bg"]
+offset_left = -52.0
+offset_top = -28.0
+offset_right = 1200.0
+offset_bottom = 688.0
+color = Color(0.4515906, 0.48869824, 0.5485734, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="bg"]
+offset_left = -52.0
+offset_top = -28.0
+offset_right = 1200.0
+offset_bottom = 165.0
+color = Color(0.18983614, 0.4714191, 0.19633949, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="bg"]
+offset_left = -52.0
+offset_top = 477.0
+offset_right = 1200.0
+offset_bottom = 670.0
+color = Color(0.18983614, 0.4714191, 0.19633949, 1)
+
+[node name="TextureRect" type="TextureRect" parent="bg"]
+offset_left = -151.0
+offset_top = 480.0
+offset_right = 1100.0
+offset_bottom = 695.0
+texture = ExtResource("1_ees1s")
+
+[node name="TextureRect2" type="TextureRect" parent="bg"]
+offset_left = -151.0
+offset_top = -47.0
+offset_right = 1100.0
+offset_bottom = 168.0
+texture = ExtResource("1_ees1s")
+
+[node name="ColorRect4" type="ColorRect" parent="bg"]
+offset_left = -52.0
+offset_top = 86.0
+offset_right = 1200.0
+offset_bottom = 165.0
+color = Color(0.0829665, 0.234986, 0.08650184, 0.37254903)
+
+[node name="Car" parent="." instance=ExtResource("1_spybq")]
+position = Vector2(442, 392)
+rotation = 3.1306784
+scale = Vector2(0.743637, 0.743637)
+
+[node name="Camera2D" type="Camera2D" parent="Car"]
+scale = Vector2(0.99999994, 0.99999994)
+
+[node name="GUI" type="CanvasLayer" parent="Car"]
+
+[node name="phone" parent="Car/GUI" instance=ExtResource("5_ees1s")]
+position = Vector2(135.00002, 49)
+scale = Vector2(0.8713629, 0.8713629)
+
+[node name="Speak" parent="Car/GUI" instance=ExtResource("5_u7e5u")]
+
+[node name="OtherCars" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 132.0
+offset_top = 239.00002
+offset_right = 172.0
+offset_bottom = 279.0
+
+[node name="othercar" parent="OtherCars" instance=ExtResource("3_7krua")]
+position = Vector2(-33323, 0)
+scale = Vector2(0.35999987, 0.35999987)
+sprite = "res://images/3dc48a596b9c865ef77b5b208b5d69f9.png"
+SPEED = 300.0
+
+[node name="othercar2" parent="OtherCars" instance=ExtResource("3_7krua")]
+position = Vector2(-9519, 0)
+scale = Vector2(0.35999987, 0.35999987)
+sprite = "res://images/3dc48a596b9c865ef77b5b208b5d69f9.png"
+CHOICE = 1.0
+SPEED = 300.0
+
+[node name="othercar3" parent="OtherCars" instance=ExtResource("3_7krua")]
+position = Vector2(1322, 0)
+scale = Vector2(0.35999987, 0.35999987)
+sprite = "res://images/3dc48a596b9c865ef77b5b208b5d69f9.png"
+CHOICE = 1.0
+SPEED = 300.0
+
+[node name="othercar4" parent="OtherCars" instance=ExtResource("3_7krua")]
+position = Vector2(-100068, 0)
+scale = Vector2(0.35999987, 0.35999987)
+sprite = "res://images/3dc48a596b9c865ef77b5b208b5d69f9.png"
+SPEED = 300.0
+
+[node name="othercar5" parent="OtherCars" instance=ExtResource("3_7krua")]
+position = Vector2(-76264, 0)
+scale = Vector2(0.35999987, 0.35999987)
+sprite = "res://images/3dc48a596b9c865ef77b5b208b5d69f9.png"
+CHOICE = 1.0
+SPEED = 300.0
+
+[node name="othercar6" parent="OtherCars" instance=ExtResource("3_7krua")]
+position = Vector2(-65423, 0)
+scale = Vector2(0.35999987, 0.35999987)
+sprite = "res://images/3dc48a596b9c865ef77b5b208b5d69f9.png"
+CHOICE = 1.0
+SPEED = 300.0
+
+[node name="MovingVan" parent="." instance=ExtResource("4_6hb63")]
+position = Vector2(1161, 388)
+scale = Vector2(0.48333684, 0.48333684)
+sprite = "res://images/Screen Shot 2026-01-05 at 6.22.19 PM.png"
+SPEED = 250.0

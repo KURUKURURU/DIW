@@ -36,6 +36,22 @@ func character_sprite():
 			s.texture = load("res://sprites by judas la carotte/sprite1 sad.png")
 		if emotion == "angry":
 			s.texture = load("res://sprites by judas la carotte/sprite1 angry.png")
+			
+	if name_label == "Will":
+		if emotion == "happy":
+			s.texture = load("res://sprites by judas la carotte/sprite3 happy.png")
+		if emotion == "sad":
+			s.texture = load("res://sprites by judas la carotte/sprite1 sad.png")
+		if emotion == "angry":
+			s.texture = load("res://sprites by judas la carotte/sprite1 angry.png")
+			
+	if name_label == "Alba":
+		if emotion == "happy":
+			s.texture = load("res://sprites by judas la carotte/sprite2 happy.png")
+		if emotion == "sad":
+			s.texture = load("res://sprites by judas la carotte/sprite2 sad.png")
+		if emotion == "angry":
+			s.texture = load("res://sprites by judas la carotte/sprite2 angry.png")
 #
 
 

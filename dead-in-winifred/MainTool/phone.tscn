@@ -1,9 +1,26 @@
-[gd_scene load_steps=9 format=3 uid="uid://202whtl45tqd"]
+[gd_scene load_steps=11 format=3 uid="uid://202whtl45tqd"]
 
 [ext_resource type="Script" uid="uid://dum5adcnimltb" path="res://MainTool/phone.gd" id="1_2yfqf"]
 [ext_resource type="Theme" uid="uid://cp4m2aay8nami" path="res://styles/Tech.tres" id="1_loew3"]
 [ext_resource type="Texture2D" uid="uid://cxiayc8mxpauq" path="res://images/gold.png" id="2_pw2tw"]
 [ext_resource type="Texture2D" uid="uid://45uma2hpa6r1" path="res://images/Screen Shot 2026-01-04 at 11.34.50 PM.png" id="3_mov1r"]
+[ext_resource type="Script" uid="uid://cc5tf221y476w" path="res://MainTool/0_00.gd" id="4_hnack"]
+[ext_resource type="AudioStream" uid="uid://be02tt7q2durc" path="res://sounds/SFX/Alba/Phone/Alba_PhoneRing.wav" id="5_bapuj"]
+
+[sub_resource type="Animation" id="Animation_bapuj"]
+resource_name = "Away"
+length = 0.736
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("whole:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(6.6045647, -0.25, 0, 0.25, 0, 548, -0.32143462, -53.5, 0, 0),
+"times": PackedFloat32Array(0, 0.5214346)
+}
 
 [sub_resource type="Animation" id="Animation_mov1r"]
 resource_name = "PullUp"
@@ -32,21 +49,6 @@ tracks/0/keys = {
 "handle_modes": PackedInt32Array(0),
 "points": PackedFloat32Array(650, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0)
-}
-
-[sub_resource type="Animation" id="Animation_bapuj"]
-resource_name = "Away"
-length = 0.736
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("whole:position:y")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0, 2),
-"points": PackedFloat32Array(6.6045647, -0.25, 0, 0.25, 0, 548, -0.32143462, -53.5, 0, 0),
-"times": PackedFloat32Array(0, 0.5214346)
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hnack"]
@@ -215,6 +217,44 @@ texture_hover = ExtResource("2_pw2tw")
 ignore_texture_size = true
 stretch_mode = 0
 
+[node name="CallingScreen" type="ColorRect" parent="whole/Caller"]
+layout_mode = 0
+offset_left = 825.0
+offset_top = 157.0
+offset_right = 864.6185
+offset_bottom = 194.80087
+scale = Vector2(6.6635485, 5.2379746)
+color = Color(0.07102393, 0.18503493, 0.21955997, 1)
+
+[node name="name" type="RichTextLabel" parent="whole/Caller/CallingScreen"]
+layout_mode = 0
+offset_left = 4.352035
+offset_top = 6.681971
+offset_right = 100.22209
+offset_bottom = 35.41345
+scale = Vector2(0.3255928, 0.3255928)
+mouse_filter = 2
+theme = ExtResource("1_loew3")
+theme_override_colors/default_color = Color(0.9867516, 0.9867516, 0.9867516, 1)
+text = "Will Andrews"
+
+[node name="0_00" type="RichTextLabel" parent="whole/Caller/CallingScreen"]
+visible = false
+layout_mode = 0
+offset_left = 16.357647
+offset_top = 27.300625
+offset_right = 112.22771
+offset_bottom = 56.0321
+scale = Vector2(0.2509886, 0.2509886)
+mouse_filter = 2
+theme = ExtResource("1_loew3")
+theme_override_colors/default_color = Color(0.9867516, 0.9867516, 0.9867516, 1)
+text = "0:00"
+script = ExtResource("4_hnack")
+
+[node name="PhoneRing" type="AudioStreamPlayer" parent="whole/Caller/CallingScreen"]
+stream = ExtResource("5_bapuj")
+
 [node name="Keypad" type="Control" parent="whole"]
 anchors_preset = 0
 offset_left = 835.0
@@ -231,7 +271,7 @@ offset_bottom = 434.0
 scale = Vector2(0.8812202, 0.5558783)
 texture = ExtResource("3_mov1r")
 
-[node name="Home" type="TextureButton" parent="whole/Keypad"]
+[node name="Decline" type="TextureButton" parent="whole/Keypad"]
 self_modulate = Color(0.43529412, 1, 1, 0.25490198)
 layout_mode = 0
 offset_left = 164.0
@@ -259,3 +299,5 @@ stretch_mode = 0
 libraries = {
 &"": SubResource("AnimationLibrary_hnack")
 }
+
+[connection signal="pressed" from="whole/Keypad/Accept" to="." method="accepted"]
