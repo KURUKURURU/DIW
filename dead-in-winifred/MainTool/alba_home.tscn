@@ -1,0 +1,183 @@
+[gd_scene load_steps=12 format=3 uid="uid://ce247hjqdaca"]
+
+[ext_resource type="Script" uid="uid://bf6temmgucp52" path="res://alba_home.gd" id="1_cbj8p"]
+[ext_resource type="Texture2D" uid="uid://cfeti0glhqmlp" path="res://images/grass.jpeg" id="2_0nsox"]
+[ext_resource type="Texture2D" uid="uid://dwxi382hajcaf" path="res://house1_4.png" id="3_0nsox"]
+[ext_resource type="PackedScene" uid="uid://p33mn10333o5" path="res://MainTool/car.tscn" id="3_t3uln"]
+[ext_resource type="PackedScene" uid="uid://so68gwvvuap2" path="res://MainTool/player.tscn" id="4_l6qsh"]
+
+[sub_resource type="Animation" id="Animation_0nsox"]
+resource_name = "Drive_in"
+length = 4.01
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-1.5707964, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(1125, -0.25, 0, 0.25, 0, 1125, -0.335, 0, 0, 0),
+"times": PackedFloat32Array(0, 2.01)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 2, 2),
+"points": PackedFloat32Array(675, -0.25, 0, 0.25, 0, 232, -1.7966666, 157, 0, 0, 238, -0.12266922, 10, 0, 0),
+"times": PackedFloat32Array(0, 2.01, 2.2333333)
+}
+
+[sub_resource type="Animation" id="Animation_t3uln"]
+length = 0.001
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_t3uln"]
+_data = {
+&"Drive_in": SubResource("Animation_0nsox"),
+&"RESET": SubResource("Animation_t3uln")
+}
+
+[sub_resource type="Animation" id="Animation_k4b0e"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.03410992, 0.03649289, 0.07719714, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_3c5qc"]
+resource_name = "fade_start"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.03410992, 0.03649289, 0.07719714, 1), Color(0.03529412, 0.03529412, 0.078431375, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nilpn"]
+_data = {
+&"RESET": SubResource("Animation_k4b0e"),
+&"fade_start": SubResource("Animation_3c5qc")
+}
+
+[node name="Alba_Home" type="Node2D"]
+script = ExtResource("1_cbj8p")
+
+[node name="Grass" type="TextureRect" parent="."]
+offset_left = -2235.0
+offset_top = -1252.0
+offset_right = 3266.0
+offset_bottom = 1608.0
+texture = ExtResource("2_0nsox")
+stretch_mode = 1
+
+[node name="Road2" type="ColorRect" parent="."]
+offset_left = 881.0
+offset_top = -292.0
+offset_right = 1517.0
+offset_bottom = 1210.0
+color = Color(0.33566755, 0.33005172, 0.34303674, 1)
+
+[node name="Road3" type="ColorRect" parent="."]
+offset_left = 328.0
+offset_top = 243.0
+offset_right = 964.0
+offset_bottom = 395.0
+color = Color(0.33566755, 0.33005172, 0.34303674, 1)
+
+[node name="House" type="TextureRect" parent="."]
+offset_top = -945.0
+offset_right = 996.0
+offset_bottom = 307.0
+texture = ExtResource("3_0nsox")
+
+[node name="Road" type="ColorRect" parent="."]
+offset_left = -2235.0
+offset_top = 780.0
+offset_right = 1517.0
+offset_bottom = 1210.0
+color = Color(1, 0.80784315, 0.54509807, 1)
+
+[node name="Car" parent="." instance=ExtResource("3_t3uln")]
+position = Vector2(1125, 238)
+rotation = -1.5707964
+scale = Vector2(0.95999855, 0.95999855)
+
+[node name="Driving" type="AnimationPlayer" parent="Car"]
+libraries = {
+&"": SubResource("AnimationLibrary_t3uln")
+}
+
+[node name="Player" parent="." instance=ExtResource("4_l6qsh")]
+position = Vector2(1006, 225)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+rotation = -1.5707964
+position_smoothing_enabled = true
+
+[node name="Fade" type="ColorRect" parent="."]
+visible = false
+z_index = 3
+offset_left = -2754.0
+offset_top = -1644.0
+offset_right = -1033.0
+offset_bottom = -623.0
+scale = Vector2(3.7040265, 4.002339)
+color = Color(0.03410992, 0.03649289, 0.07719714, 1)
+
+[node name="fade" type="AnimationPlayer" parent="Fade"]
+libraries = {
+&"": SubResource("AnimationLibrary_nilpn")
+}

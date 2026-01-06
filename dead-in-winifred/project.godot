@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Dead In Winifred"
-run/main_scene="uid://cvq280sj7m43r"
+run/main_scene="uid://cnv8gln8vqfb1"
 config/features=PackedStringArray("4.5", "Mobile")
 config/icon="res://icon.svg"
 

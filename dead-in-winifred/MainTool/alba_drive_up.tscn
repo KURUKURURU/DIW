@@ -1,0 +1,132 @@
+[gd_scene load_steps=8 format=3 uid="uid://40uaqj8lt1hp"]
+
+[ext_resource type="Script" uid="uid://dvlxiac7f35tb" path="res://MainTool/alba_drive_up.gd" id="1_rwruj"]
+[ext_resource type="Texture2D" uid="uid://cfeti0glhqmlp" path="res://images/grass.jpeg" id="2_cmvlt"]
+[ext_resource type="Texture2D" uid="uid://dwxi382hajcaf" path="res://house1_4.png" id="3_8raft"]
+[ext_resource type="PackedScene" uid="uid://p33mn10333o5" path="res://MainTool/car.tscn" id="4_xxf1j"]
+
+[sub_resource type="Animation" id="Animation_k4b0e"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.03410992, 0.03649289, 0.07719714, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_3c5qc"]
+resource_name = "fade_start"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.03410992, 0.03649289, 0.07719714, 1), Color(0.03529412, 0.03529412, 0.078431375, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nilpn"]
+_data = {
+&"RESET": SubResource("Animation_k4b0e"),
+&"fade_start": SubResource("Animation_3c5qc")
+}
+
+[node name="Alba_Home" type="Node2D"]
+script = ExtResource("1_rwruj")
+
+[node name="Grass" type="TextureRect" parent="."]
+offset_left = -2235.0
+offset_top = -1252.0
+offset_right = 3266.0
+offset_bottom = 1608.0
+texture = ExtResource("2_cmvlt")
+stretch_mode = 1
+
+[node name="Road2" type="ColorRect" parent="."]
+offset_left = 881.0
+offset_top = -292.0
+offset_right = 1517.0
+offset_bottom = 1210.0
+color = Color(0.33566755, 0.33005172, 0.34303674, 1)
+
+[node name="Road3" type="ColorRect" parent="."]
+offset_left = 328.0
+offset_top = 243.0
+offset_right = 964.0
+offset_bottom = 395.0
+color = Color(0.33566755, 0.33005172, 0.34303674, 1)
+
+[node name="House" type="TextureRect" parent="."]
+offset_top = -945.0
+offset_right = 996.0
+offset_bottom = 307.0
+texture = ExtResource("3_8raft")
+
+[node name="Road" type="ColorRect" parent="."]
+offset_left = -2235.0
+offset_top = 780.0
+offset_right = 1517.0
+offset_bottom = 1210.0
+color = Color(1, 0.80784315, 0.54509807, 1)
+
+[node name="Car" parent="." instance=ExtResource("4_xxf1j")]
+position = Vector2(-1894, 1055)
+scale = Vector2(0.95999855, 0.95999855)
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Car"]
+remote_path = NodePath("../../Camera2D")
+update_rotation = false
+update_scale = false
+
+[node name="Fade" type="ColorRect" parent="."]
+visible = false
+z_index = 3
+offset_left = -2754.0
+offset_top = -1644.0
+offset_right = -1033.0
+offset_bottom = -623.0
+scale = Vector2(3.7040265, 4.002339)
+color = Color(0.03410992, 0.03649289, 0.07719714, 1)
+
+[node name="fade" type="AnimationPlayer" parent="Fade"]
+libraries = {
+&"": SubResource("AnimationLibrary_nilpn")
+}
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-1894, 1055)
+scale = Vector2(0.95999855, 0.95999855)
