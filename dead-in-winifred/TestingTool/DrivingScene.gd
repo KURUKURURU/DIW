@@ -51,7 +51,7 @@ func check_phone():
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	$Car/GUI/Fade.show()
+	$Car/GUI/Fade.hide()
 	
 	await wait(5.0)
 	await phone._phone_ringing("Will Andrews")
