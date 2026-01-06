@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cnv8gln8vqfb1"]
+[gd_scene load_steps=11 format=3 uid="uid://cnv8gln8vqfb1"]
 
 [ext_resource type="Texture2D" uid="uid://c6k65pwu8q5ig" path="res://images/Screen Shot 2026-01-05 at 6.54.47 PM.png" id="1_ees1s"]
 [ext_resource type="PackedScene" uid="uid://p33mn10333o5" path="res://MainTool/car.tscn" id="1_spybq"]
@@ -7,6 +7,67 @@
 [ext_resource type="PackedScene" uid="uid://b7w87yv5i3w1s" path="res://MainTool/moving_truck.tscn" id="4_6hb63"]
 [ext_resource type="PackedScene" uid="uid://202whtl45tqd" path="res://MainTool/phone.tscn" id="5_ees1s"]
 [ext_resource type="PackedScene" uid="uid://dpxk2n83pvoo5" path="res://MainTool/speak.tscn" id="5_u7e5u"]
+
+[sub_resource type="Animation" id="Animation_u7e5u"]
+resource_name = "fade"
+length = 2.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1, 2.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.11),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_lifbg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pg38u"]
+_data = {
+&"RESET": SubResource("Animation_lifbg"),
+&"fade": SubResource("Animation_u7e5u")
+}
 
 [node name="DrivingScene_Testing" type="Node2D"]
 script = ExtResource("1_u7e5u")
@@ -72,6 +133,21 @@ position = Vector2(135.00002, 49)
 scale = Vector2(0.8713629, 0.8713629)
 
 [node name="Speak" parent="Car/GUI" instance=ExtResource("5_u7e5u")]
+
+[node name="Fade" type="ColorRect" parent="Car/GUI"]
+visible = false
+self_modulate = Color(1, 1, 1, 0)
+z_index = 3
+offset_left = -222.0
+offset_top = -138.0
+offset_right = 1499.0
+offset_bottom = 883.0
+color = Color(0.03410992, 0.03649289, 0.07719714, 1)
+
+[node name="fade" type="AnimationPlayer" parent="Car/GUI/Fade"]
+libraries = {
+&"": SubResource("AnimationLibrary_pg38u")
+}
 
 [node name="OtherCars" type="Control" parent="."]
 layout_mode = 3

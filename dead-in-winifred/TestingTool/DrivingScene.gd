@@ -6,6 +6,7 @@ extends Node2D
 
 #@onready var e = $Player/RemoteTransform2D/Emote  #emotes / screen animations
 @onready var speak = $Car/GUI/Speak #textbox text, name, and sprite
+@onready var fade = $Car/GUI/Fade/fade #textbox text, name, and sprite
 
 @onready var em = speak.emotion  #textbox text, name, and sprite
 
@@ -50,6 +51,8 @@ func check_phone():
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	$Car/GUI/Fade.show()
+	
 	await wait(5.0)
 	await phone._phone_ringing("Will Andrews")
 	
@@ -125,6 +128,8 @@ func _ready() -> void:
 	await say("Bye Boss.")
 	
 	done()
+	
+	fade.play("fade")
 	
 func wait(seconds: float) -> void:
 	await get_tree().create_timer(seconds).timeout

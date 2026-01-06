@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://p33mn10333o5"]
+[gd_scene load_steps=5 format=3 uid="uid://p33mn10333o5"]
 
 [ext_resource type="Script" uid="uid://dcrw32brpinio" path="res://car.gd" id="1_6cl48"]
 [ext_resource type="Texture2D" uid="uid://mepmxbuqb8nt" path="res://images/3dc48a596b9c865ef77b5b208b5d69f9.png" id="2_2pcbg"]
+[ext_resource type="AudioStream" uid="uid://clls5y67h7rk2" path="res://sounds/SFX/Other/Car/carmoving.mp3" id="3_2pcbg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mcryv"]
 size = Vector2(380, 164)
@@ -17,3 +18,8 @@ texture = ExtResource("2_2pcbg")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, 0)
 shape = SubResource("RectangleShape2D_mcryv")
+
+[node name="carhum" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(-62, 0)
+stream = ExtResource("3_2pcbg")
+volume_db = -15.65

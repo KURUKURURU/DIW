@@ -28,7 +28,7 @@ func _process(delta: float) -> void:
 		if honk.playing:
 			honk.stop()
 	
-	if not Input.is_action_pressed("left"):
+	while not Input.is_action_pressed("left"):
 		await wait(1.0)
 		still_time += 1
 		
