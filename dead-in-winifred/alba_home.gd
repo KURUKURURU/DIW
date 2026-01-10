@@ -8,6 +8,7 @@ var drove_in: bool =  false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	car.can_move = false
 	player.can_move = false
 	player.hide()
 	

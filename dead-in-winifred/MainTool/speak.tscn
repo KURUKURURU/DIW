@@ -1,11 +1,74 @@
-[gd_scene load_steps=10 format=3 uid="uid://dpxk2n83pvoo5"]
+[gd_scene load_steps=18 format=3 uid="uid://dpxk2n83pvoo5"]
 
 [ext_resource type="Script" uid="uid://daxm84wp2ral0" path="res://MainTool/speak.gd" id="1_75tj6"]
 [ext_resource type="Theme" uid="uid://cu5t5px448s1e" path="res://styles/speak.tres" id="2_apowt"]
+[ext_resource type="Texture2D" uid="uid://c5vgs4igqo6c1" path="res://images/textboxes/text_box.png" id="2_i4uqy"]
 [ext_resource type="FontFile" uid="uid://cqps7m4fskqt6" path="res://fonts/xl-tight-boo/XL-TightBoo.otf" id="3_vp1kc"]
 [ext_resource type="FontFile" uid="uid://v4o1tax3tfx0" path="res://fonts/maltais-learlex/Maltais_Learlex.ttf" id="4_ew14m"]
 [ext_resource type="Script" uid="uid://cejdyuktd378d" path="res://MainTool/advance_button.gd" id="5_75tj6"]
-[ext_resource type="Texture2D" uid="uid://btvw7frjdo705" path="res://images/images.png" id="5_apowt"]
+[ext_resource type="Texture2D" uid="uid://7a6lb37wuhgp" path="res://images/Alba/1.png" id="6_cor7a"]
+[ext_resource type="Texture2D" uid="uid://df6b4sm2l8dpg" path="res://images/Alba/2.png" id="7_qbodn"]
+[ext_resource type="Texture2D" uid="uid://cibbh6nb1j61h" path="res://images/Alba/3.png" id="8_8dsto"]
+[ext_resource type="Texture2D" uid="uid://b82rbx0f7vl0v" path="res://images/Alba/4.png" id="9_6y1n3"]
+[ext_resource type="Texture2D" uid="uid://dx1lg22lql628" path="res://images/Alba/5.png" id="10_652pj"]
+[ext_resource type="Texture2D" uid="uid://dltl7umx513vw" path="res://sprites by judas la carotte/sprite3 happy small.png" id="11_cor7a"]
+[ext_resource type="Texture2D" uid="uid://dhyei48yg1pj0" path="res://images/textboxes/button/butt1.png" id="11_i4uqy"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yh61a"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_cor7a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_qbodn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_8dsto")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_6y1n3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_652pj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_qbodn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_qbodn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_8dsto")
+}],
+"loop": true,
+"name": &"alba_neutral",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_cor7a")
+}],
+"loop": true,
+"name": &"alba_neutral_done",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_cor7a")
+}],
+"loop": true,
+"name": &"will_neutral",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_cor7a")
+}],
+"loop": true,
+"name": &"will_neutral_done",
+"speed": 5.0
+}]
 
 [sub_resource type="Animation" id="Animation_75tj6"]
 length = 0.001
@@ -46,42 +109,31 @@ _data = {
 script = ExtResource("1_75tj6")
 
 [node name="img" type="TextureRect" parent="."]
-offset_left = -9.0
-offset_top = 500.0
-offset_right = 31.0
-offset_bottom = 540.0
-
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_left = 143.0
-offset_top = 527.0
-offset_right = 1018.0
-offset_bottom = 621.0
-color = Color(0.19607843, 0.19607843, 0.19607843, 0.5411765)
-
-[node name="ColorRect2" type="ColorRect" parent="."]
-offset_left = 143.0
-offset_top = 492.0
-offset_right = 1018.0
-offset_bottom = 628.0996
-scale = Vector2(0.6453194, 0.26451215)
-color = Color(0.19607843, 0.19607843, 0.19607843, 0.5411765)
+offset_left = 152.0
+offset_top = 463.0
+offset_right = 774.0
+offset_bottom = 601.0
+scale = Vector2(1.3439534, 1.3439534)
+texture = ExtResource("2_i4uqy")
 
 [node name="txt" type="RichTextLabel" parent="."]
-offset_left = 325.0
+offset_left = 439.00003
 offset_top = 535.0
-offset_right = 1005.0
-offset_bottom = 617.0
+offset_right = 802.852
+offset_bottom = 598.99036
+scale = Vector2(1.3439534, 1.3439534)
 theme = ExtResource("2_apowt")
 bbcode_enabled = true
-text = "Do you really think you can kill someone and expect to get away with it? Have you watched any TV show lately?"
+text = "Do you really think you can kill someone and expect to get away with it? [i]Have you watched any TV show lately?"
 visible_characters = 0
 visible_ratio = 0.0
 
 [node name="name" type="RichTextLabel" parent="."]
-offset_left = 326.0
-offset_top = 498.0
-offset_right = 663.0
-offset_bottom = 531.0
+offset_left = 417.99997
+offset_top = 481.0
+offset_right = 755.0
+offset_bottom = 514.0
+scale = Vector2(1.3439534, 1.3439534)
 theme = ExtResource("2_apowt")
 theme_override_fonts/normal_font = ExtResource("3_vp1kc")
 theme_override_fonts/bold_font = ExtResource("4_ew14m")
@@ -93,14 +145,17 @@ text = "Ava Bisset"
 [node name="cropTool" type="ColorRect" parent="."]
 clip_children = 1
 clip_contents = true
-offset_left = 151.0
-offset_top = 349.0
-offset_right = 304.0
+offset_left = 168.0
+offset_top = 348.0
+offset_right = 364.0
 offset_bottom = 607.0
+scale = Vector2(1.3439534, 1.3439534)
 
-[node name="Sprite" type="Sprite2D" parent="cropTool"]
-position = Vector2(70, 202)
-scale = Vector2(0.24519496, 0.24519496)
+[node name="Sprite" type="AnimatedSprite2D" parent="cropTool"]
+position = Vector2(107.14658, 113.09917)
+scale = Vector2(0.9977279, 0.97772783)
+sprite_frames = SubResource("SpriteFrames_yh61a")
+animation = &"will_neutral_done"
 
 [node name="animation" type="AnimationPlayer" parent="."]
 libraries = {
@@ -108,12 +163,13 @@ libraries = {
 }
 
 [node name="advance_button" type="TextureButton" parent="."]
-offset_left = 927.00006
-offset_top = 530.0
-offset_right = 1127.0
-offset_bottom = 730.0
+offset_left = 917.0
+offset_top = 561.0
+offset_right = 1080.6445
+offset_bottom = 751.32837
 scale = Vector2(0.43386686, 0.43386686)
-texture_normal = ExtResource("5_apowt")
+texture_normal = ExtResource("11_i4uqy")
+stretch_mode = 0
 script = ExtResource("5_75tj6")
 
 [connection signal="advance" from="advance_button" to="." method="advance"]

@@ -10,6 +10,8 @@ extends Node2D
 
 signal go
 
+var talking
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	self.hide() # Hide textbox on start.
@@ -29,31 +31,27 @@ func _process(delta: float) -> void:
 func character_sprite():
 	
 	#Checks if the project
-	if name_label == "Ava Bisset":
+	if name_label == "Alba":
+	
 		if emotion == "neutral":
-			s.texture = load("res://sprites by judas la carotte/sprite1 happy.png")
+			if (0.1 < t.visible_ratio) and (t.visible_ratio < 1):
+				s.play("alba_neutral")
+			else:
+				s.play("alba_neutral_done")
+	
 		if emotion == "sad":
 			s.texture = load("res://sprites by judas la carotte/sprite1 sad.png")
 		if emotion == "angry":
 			s.texture = load("res://sprites by judas la carotte/sprite1 angry.png")
 			
 	if name_label == "Will":
-		if emotion == "happy":
-			s.texture = load("res://sprites by judas la carotte/sprite3 happy.png")
-		if emotion == "sad":
-			s.texture = load("res://sprites by judas la carotte/sprite1 sad.png")
-		if emotion == "angry":
-			s.texture = load("res://sprites by judas la carotte/sprite1 angry.png")
-			
-	if name_label == "Alba":
-		if emotion == "happy":
-			s.texture = load("res://sprites by judas la carotte/sprite2 happy.png")
-		if emotion == "sad":
-			s.texture = load("res://sprites by judas la carotte/sprite2 sad.png")
-		if emotion == "angry":
-			s.texture = load("res://sprites by judas la carotte/sprite2 angry.png")
-#
-
+		
+		if emotion == "neutral":
+			if (0.1 < t.visible_ratio) and (t.visible_ratio < 1): 
+				s.play("will_neutral")
+			else:
+				s.play("will_neutral_done")
+		
 
 #important speaking process:
 func say(message):
@@ -66,6 +64,8 @@ func say(message):
 	a.play("reveal")
 	self.show()
 	
+	talking = true
+	
 	await a.animation_finished
 	await wait(1.0)
 	
@@ -76,6 +76,7 @@ func say(message):
 	t.text = "" 
 	t.visible_ratio = 0
 	
+	talking = false
 	return
 #
 

@@ -60,43 +60,43 @@ func _ready() -> void:
 	
 	print("sprite change!")
 	speak.name_label = "Will"
-	speak.emotion = "happy"
+	speak.emotion = "neutral"
 	
 	await say("Heya!")
 	await say("Are you driving?")
 	
 	print("sprite change!")
 	speak.name_label = "Alba"
-	speak.emotion = "happy"
+	speak.emotion = "neutral"
 	
 	await say("Yup. But don't worry, I'm focusing on the road.")
 	await say("What'd you need?")
 	
 	print("sprite change!")
 	speak.name_label = "Will"
-	speak.emotion = "happy"
+	speak.emotion = "neutral"
 	await say("Well, first, I'd like to ask how the moving is going.")
 	
 	print("sprite change!")
 	speak.name_label = "Alba"
-	speak.emotion = "happy"
+	speak.emotion = "neutral"
 	await say("It's fine. Though I think it's a bit much for one person.")
 	await say("I had to hire 2 trucks.")
 	
 	print("sprite change!")
 	speak.name_label = "Will"
-	speak.emotion = "happy"
+	speak.emotion = "neutral"
 	await say("Jeez Alba! You're one person! How can you have that much crap?!")
 	await say("I thought you were trying to go small?!")
 	
 	print("sprite change!")
 	speak.name_label = "Alba"
-	speak.emotion = "happy"
+	speak.emotion = "neutral"
 	await say("If you're about to be my boss, I don't think you should at so unflappable.")
 	
 	print("sprite change!")
 	speak.name_label = "Will"
-	speak.emotion = "happy"
+	speak.emotion = "neutral"
 	await say("You asked for the job, I can talk [i]however I like[/i].")
 	await say("...'unflappable?'")
 	
@@ -104,7 +104,7 @@ func _ready() -> void:
 	
 	print("sprite change!")
 	speak.name_label = "Will"
-	speak.emotion = "happy"
+	speak.emotion = "neutral"
 	await say("Well, I actually called to warn you.")
 	await say("We just got a new case, and you'll have to prepare yourself, because it's quite...")
 	await say("Mm.")
@@ -112,24 +112,26 @@ func _ready() -> void:
 	
 	print("sprite change!")
 	speak.name_label = "Alba"
-	speak.emotion = "happy"
+	speak.emotion = "neutral"
 	await say("Serial killings?")
 	
 	print("sprite change!")
 	speak.name_label = "Will"
-	speak.emotion = "happy"
+	speak.emotion = "neutral"
 	await say("Yup. I'll talk to you more about it when you come by later.")
 	await say("For now just focus on yourself and settling in.")
 	
 	print("sprite change!")
 	speak.name_label = "Alba"
-	speak.emotion = "happy"
+	speak.emotion = "neutral"
 	await say("Thanks.")
 	await say("Bye Boss.")
 	
 	done()
 	
 	fade.play("fade")
+	
+	get_tree().change_scene_to_file("res://MainTool/alba_drive_up.tscn")
 	
 func wait(seconds: float) -> void:
 	await get_tree().create_timer(seconds).timeout

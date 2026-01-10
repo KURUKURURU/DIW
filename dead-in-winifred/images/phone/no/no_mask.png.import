@@ -1,0 +1,16 @@
+[remap]
+
+importer="bitmap"
+type="BitMap"
+uid="uid://cjbs64gi7tp6m"
+path="res://.godot/imported/no_mask.png-5302cfd57a917ff28b6d5652019d2669.res"
+
+[deps]
+
+source_file="res://images/phone/no/no_mask.png"
+dest_files=["res://.godot/imported/no_mask.png-5302cfd57a917ff28b6d5652019d2669.res"]
+
+[params]
+
+create_from=1
+threshold=0.5

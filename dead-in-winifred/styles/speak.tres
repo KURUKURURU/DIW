@@ -6,11 +6,17 @@
 [ext_resource type="FontFile" uid="uid://cxmabisaus3mo" path="res://fonts/caslon-antique/CaslonAntique.ttf" id="4_3ghkg"]
 
 [resource]
-RichTextLabel/font_sizes/bold_font_size = 26
-RichTextLabel/font_sizes/bold_italics_font_size = 26
-RichTextLabel/font_sizes/italics_font_size = 26
-RichTextLabel/font_sizes/mono_font_size = 26
-RichTextLabel/font_sizes/normal_font_size = 26
+RichTextLabel/colors/default_color = Color(0.2019315, 0.077798, 0.06467164, 1)
+RichTextLabel/colors/font_outline_color = Color(1, 1, 1, 0.35686275)
+RichTextLabel/colors/font_shadow_color = Color(0.29803923, 0.08627451, 0.09803922, 0.23529412)
+RichTextLabel/constants/line_separation = -3
+RichTextLabel/constants/outline_size = 1
+RichTextLabel/constants/shadow_outline_size = 1
+RichTextLabel/font_sizes/bold_font_size = 18
+RichTextLabel/font_sizes/bold_italics_font_size = 18
+RichTextLabel/font_sizes/italics_font_size = 18
+RichTextLabel/font_sizes/mono_font_size = 18
+RichTextLabel/font_sizes/normal_font_size = 18
 RichTextLabel/fonts/bold_font = ExtResource("1_34q1r")
 RichTextLabel/fonts/bold_italics_font = ExtResource("2_1ntn8")
 RichTextLabel/fonts/italics_font = ExtResource("3_ko8ok")

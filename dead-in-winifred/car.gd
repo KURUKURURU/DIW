@@ -7,6 +7,7 @@ const ACCELERATION = 1200.0
 const FRICTION = 500.0
 
 var moving: bool
+var can_move: bool = true
 
 func _process(delta: float) -> void:
 	if moving == true:
@@ -19,7 +20,7 @@ func _process(delta: float) -> void:
 func _physics_process(delta):
 	var direction_x = Input.get_axis("left", "right")
 
-	if direction_x != 0:
+	if direction_x != 0 and can_move:
 		moving = true
 		# Accelerate toward target speed
 		velocity.x = move_toward(
